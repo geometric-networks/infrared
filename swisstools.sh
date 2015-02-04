@@ -3,22 +3,22 @@ cd ~/Desktop
 while :
 do
 clear
-echo -ne 'IR Swiss-tools - Coded by David Florek\n\n:::Main Menu:::\nPlease select a number option.\n1. Sanitize a URL link\n2. De-sanitize a URL link\n3. Extract IP and URL addresses\n4. IPLigence Unlimited\n5. Firefox Mass-URLscan\n6. Exit\n'
+echo -ne 'IR Swiss-tools - \n:::Main Menu:::\nPlease select a number option.\n1. Sanitize a URL link\n2. De-sanitize a URL link\n3. Extract IP and URL addresses\n4. IPLigence Unlimited\n5. Firefox Mass-URLscan\n6. Exit\n'
 read opt
 case $opt in 
-1)
-echo 'URL Link Sanitizer'
+)
+echo 'URL Sanitizer'
 read -p 'CTRL+C the URL link(s) and press [ENTER] to begin' v
-xclip -o | echo $(sed 's/:/[:]/g;s/\./[\.]/g;s/http/hXXp/g')
-echo 'URL Link Obfuscated! Go ahead and paste the output.'
-read -p 'Press [Enter] to quit.' vx
+xclip -o | sed 's/:/[:]/g;s/\./[\.]/g;s/http/hXXp/g' | xclip -sel clip
+echo $(xclip -o -sel clip)
+read -p 'URL Link(s) Obfuscated! Paste the output and press [Enter] to quit.' vx
 exit 1;;
 2)
 echo 'URL De-sanitizer'
 read -p 'CTRL+C the URL link(s) and press [ENTER] to begin' v1
-xclip -o | echo $(sed 's/[:]/:/g;s/[\.]/\./g;s/hXXp/http/g')
-echo 'URL Link Deobfuscated! Go ahead and paste the output.'
-read -p 'Press [Enter] to quit.' vx1
+xclip -o | sed 's/[:]/:/g;s/[\.]/\./g;s/hXXp/http/g' | xclip -sel clip
+echo $(xclip -o -sel clip)
+read -p 'URL Link(s) Deobfuscated! Paste the output and press [Enter] to quit.' vx1
 exit 1;;
 3)
 echo 'URL and IP extraction'
